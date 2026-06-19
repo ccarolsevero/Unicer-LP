@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
-import { BRANDS } from "@/lib/constants";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 const HIGHLIGHTS = [
@@ -32,8 +31,7 @@ export function About() {
               <p className="mt-4 text-lg leading-relaxed text-unicer-blue/70">
                 Hoje produzimos cilindros para laminadores, pinhões, eixos,
                 engrenagens, bombas de vácuo, rodas de vagonetas e peças de
-                reposição para equipamentos das marcas{" "}
-                {BRANDS.join(", ")}.
+                reposição para as principais marcas do mercado cerâmico.
               </p>
 
               <ul className="mt-8 space-y-3">
@@ -53,7 +51,7 @@ export function About() {
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-unicer-red/10 to-unicer-blue/10 blur-2xl" />
               <div className="relative overflow-hidden rounded-2xl border-2 border-unicer-blue/15 bg-white p-8 shadow-xl shadow-unicer-blue/10 sm:p-10">
-                <div className="mb-8 overflow-hidden rounded-xl border border-unicer-blue/10">
+                <div className="overflow-hidden rounded-xl border border-unicer-blue/10">
                   <Image
                     src="/home.png"
                     alt="Unicer Equipamentos para Cerâmica"
@@ -62,22 +60,6 @@ export function About() {
                     className="h-auto w-full object-cover"
                   />
                 </div>
-
-                <div className="grid grid-cols-3 gap-4">
-                  {BRANDS.map((brand, index) => (
-                    <AnimateOnScroll key={brand} delay={index * 60} variant="scale-up">
-                      <div className="rounded-xl border border-unicer-blue/10 bg-unicer-blue/5 px-3 py-4 text-center">
-                        <span className="text-sm font-semibold text-unicer-blue">
-                          {brand}
-                        </span>
-                      </div>
-                    </AnimateOnScroll>
-                  ))}
-                </div>
-
-                <p className="mt-6 text-center text-xs text-unicer-blue/50">
-                  Peças de reposição para as principais marcas do setor
-                </p>
               </div>
             </div>
           </AnimateOnScroll>

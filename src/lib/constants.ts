@@ -127,5 +127,3 @@ export const DIFFERENTIALS = [
       "Centenas de peças de reposição, máquinas e equipamentos em um só fornecedor.",
   },
 ] as const;
-
-export const BRANDS = ["Bonfanti", "Morando", "Verdés"] as const;
