@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowLeft, MessageCircle } from "lucide-react";
 import type { CatalogItem, Category } from "@/types/catalog";
 import { COMPANY } from "@/lib/constants";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
@@ -134,18 +134,19 @@ export function ProductDetailView({ item, category }: ProductDetailViewProps) {
               )}
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <a
                 href={quoteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-unicer-red-dark px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-unicer-red-dark/25 transition-all hover:bg-unicer-red-darker hover:scale-[1.02]"
+                className="inline-flex w-fit items-center justify-center gap-2 rounded-full bg-unicer-red-dark px-7 py-3.5 text-sm font-semibold whitespace-nowrap text-white shadow-lg shadow-unicer-red-dark/25 transition-all hover:bg-unicer-red-darker hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-unicer-red sm:text-base"
               >
-                Solicitar orçamento deste produto
+                <MessageCircle className="h-5 w-5 shrink-0" aria-hidden />
+                Solicitar orçamento
               </a>
               <Link
                 href={backHref}
-                className="inline-flex items-center justify-center text-sm font-medium text-unicer-blue/60 hover:text-unicer-blue"
+                className="inline-flex items-center text-sm font-medium text-unicer-blue/60 transition-colors hover:text-unicer-blue"
               >
                 Ver todos em {category.label}
               </Link>
