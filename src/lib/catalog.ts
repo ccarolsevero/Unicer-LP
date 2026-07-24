@@ -141,6 +141,36 @@ export async function getActiveProductCategories(): Promise<CategoryWithItems[]>
   }));
 }
 
+export async function getActiveCategoryBySlug(
+  slug: string
+): Promise<CategoryWithItems | null> {
+  const categories = await getActiveProductCategories();
+  return categories.find((c) => c.slug === slug) ?? null;
+}
+
+export async function getActiveItemByCategorySlug(
+  categorySlug: string,
+  itemId: string
+): Promise<{ category: CategoryWithItems; item: CatalogItem } | null> {
+  const category = await getActiveCategoryBySlug(categorySlug);
+  if (!category) return null;
+
+  const decodedId = decodeURIComponent(itemId);
+  const item =
+    category.items.find((i) => i.id === decodedId) ??
+    category.items.find((i) => i.id === itemId);
+
+  if (!item) return null;
+  return { category, item };
+}
+
+export async function getActiveItemIdsByCategorySlug(
+  slug: string
+): Promise<string[]> {
+  const category = await getActiveCategoryBySlug(slug);
+  return category?.items.map((item) => item.id) ?? [];
+}
+
 export async function addCategory(input: CategoryInput): Promise<Category> {
   const catalog = await readCatalog();
   const slug = slugify(input.slug || input.label);
